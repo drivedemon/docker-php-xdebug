@@ -52,7 +52,7 @@ RUN docker-php-ext-configure imap \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-COPY .docker/config/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+COPY ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 COPY  ./php.ini "$PHP_INI_DIR/php.ini"
 
