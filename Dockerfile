@@ -100,7 +100,3 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 RUN curl --silent --location https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g yarn
-
-# Install nginx
-RUN apt install -y nginx
-
