@@ -1,6 +1,6 @@
 # php-node-composer-xdebug
 Versions
- - php version 7.3
- - composer version 1.10.20
- - nodejs version 8.9.4
+ - php version 8.0
+ - composer version 2.0.12
+ - nodejs version 14.x
  - xdebug 3
