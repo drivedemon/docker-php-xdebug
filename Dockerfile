@@ -53,6 +53,9 @@ RUN apt-get install -y --allow-unauthenticated \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
+RUN pecl install -o -f redis \
+    &&  rm -rf /tmp/pear \
+    &&  docker-php-ext-enable redis
 RUN docker-php-ext-configure imap \
         --with-imap \
         --with-kerberos \
@@ -98,4 +101,6 @@ RUN curl --silent --location https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g yarn
 
+# Install nginx
+RUN apt install -y nginx
 
