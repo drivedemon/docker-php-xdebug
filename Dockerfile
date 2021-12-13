@@ -48,6 +48,7 @@ RUN apt-get install -y --allow-unauthenticated \
     libstdc++6 \
     libgcc1 \
     libpng-dev \
+    libwebp-dev \
     libjpeg-dev
 
 # Clear cache
@@ -63,9 +64,11 @@ RUN docker-php-ext-configure imap \
         --with-imap-ssl \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
-RUN docker-php-ext-configure gd --enable-gd --with-jpeg
+RUN docker-php-ext-configure gd --enable-gd --with-jpeg --with-webp
 RUN docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr
+RUN docker-php-ext-configure exif --enable-exif
 RUN docker-php-ext-install \
+    exif \
     bcmath \
     bz2 \
     curl \
