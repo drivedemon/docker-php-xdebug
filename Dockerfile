@@ -91,12 +91,12 @@ RUN docker-php-ext-install \
     zip
 
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-COPY  ./php.ini "$PHP_INI_DIR/php.ini"
+COPY ./php.ini "$PHP_INI_DIR/php.ini"
 
 # Get Composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # Install NodeJS from node_base
-RUN curl --silent --location https://deb.nodesource.com/setup_14.x | bash -
+RUN curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g yarn
