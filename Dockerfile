@@ -6,7 +6,9 @@ FROM composer:${COMPOSER_VERSION} AS composer
 FROM php:${PHP_VERSION}-fpm
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update -y
+RUN apt-get install -y libenchant-2-dev
+RUN apt-get install -y --no-install-recommends \
     curl \
     git \
     libpng-dev \
@@ -17,7 +19,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libkrb5-dev \
     libbz2-dev \
     libcurl4-openssl-dev \
-    libenchant-dev \
     libmpc-dev \
     libldap2-dev \
     libpq-dev \
@@ -81,7 +82,6 @@ RUN docker-php-ext-install \
     pdo_mysql \
     pgsql \
     pspell \
-    readline \
     snmp \
     soap \
     pdo_sqlite \
@@ -89,6 +89,7 @@ RUN docker-php-ext-install \
     xml \
     xsl \
     zip
+#    readline \
 
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 COPY ./php.ini "$PHP_INI_DIR/php.ini"
