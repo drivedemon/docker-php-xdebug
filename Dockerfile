@@ -91,6 +91,7 @@ RUN docker-php-ext-install \
     tidy \
     xml \
     xsl \
+    pcntl \
     zip
 #    readline \
 
