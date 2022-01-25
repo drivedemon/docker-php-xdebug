@@ -5,10 +5,12 @@ FROM composer:${COMPOSER_VERSION} AS composer
 
 FROM php:${PHP_VERSION}-fpm
 
+RUN PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 # Install system dependencies
 RUN apt-get update -y
 RUN apt-get install -y libenchant-2-dev
 RUN apt-get install -y --no-install-recommends \
+    chromium \
     curl \
     git \
     libpng-dev \
