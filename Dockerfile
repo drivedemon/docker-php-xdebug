@@ -1,11 +1,13 @@
-ARG PHP_VERSION=8.0
+ARG PHP_VERSION=8.1.3
 ARG COMPOSER_VERSION=2.0.12
 
 FROM composer:${COMPOSER_VERSION} AS composer
 
 FROM php:${PHP_VERSION}-fpm
 
-RUN PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV CHROMIUM_PATH=/usr/bin/chromium-browser
+
 # Install system dependencies
 RUN apt-get update -y
 RUN apt-get install -y libenchant-2-dev
