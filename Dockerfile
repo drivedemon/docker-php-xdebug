@@ -1,5 +1,5 @@
 ARG PHP_VERSION=8.1.3
-ARG COMPOSER_VERSION=2.0.12
+ARG COMPOSER_VERSION=2.4.1
 
 FROM composer:${COMPOSER_VERSION} AS composer
 
@@ -107,6 +107,6 @@ COPY ./php.ini "$PHP_INI_DIR/php.ini"
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # Install NodeJS from node_base
-RUN curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
+RUN curl --silent --location https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g yarn
